@@ -2,6 +2,8 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import colors from "./assets/colors/colors"
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function App() {
 
@@ -15,8 +17,8 @@ export default function App() {
   } else {
     return (
       <View style={styles.container}>
-        <Text style={{fontFamily: "Palette Mosaic"}}>SNEAKERS APP</Text>
-        <Text style={{fontFamily: "Bebas Neue"}}>Welcome app sneakers</Text>
+        <Text style={{fontFamily: "Palette Mosaic", color: colors.primary}}>SNEAKERS APP <AntDesign name="shoppingcart" size={20} color="white" /></Text>
+        <Text style={{fontFamily: "Bebas Neue", color: colors.text1}}>Welcome app sneakers</Text>
       </View>
     );
   }
@@ -27,7 +29,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
   },
