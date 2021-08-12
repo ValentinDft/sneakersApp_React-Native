@@ -1,9 +1,14 @@
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import colors from "./assets/colors/colors"
-import { AntDesign } from '@expo/vector-icons'; 
+
+// Navigation
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
+
+// Components
+import Home from './components/Home';
 
 export default function App() {
 
@@ -16,21 +21,11 @@ export default function App() {
     return <AppLoading />;
   } else {
     return (
-      <View style={styles.container}>
-        <Text style={{fontFamily: "Palette Mosaic", color: colors.primary}}>SNEAKERS APP <AntDesign name="shoppingcart" size={20} color="white" /></Text>
-        <Text style={{fontFamily: "Bebas Neue", color: colors.text1}}>Welcome app sneakers</Text>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
-
-  
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
