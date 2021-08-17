@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, FlatList, Image } from 'react-native';
+import { Text, View, StyleSheet, FlatList, Image, ScrollView } from 'react-native';
 
 // Datas
 import colors from "../assets/colors/colors"
@@ -27,31 +27,64 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.titleText}>SHOP MY SNEAKERS</Text>
-                <Text style={{fontFamily: "Bebas Neue", color: colors.text1, fontSize: 16}}>Buy your favorite sneakers !</Text>
-            </View>
-
-            <View style={styles.containerSearch}>
-                <AntDesign name="search1" size={18} color="white" />
-                <View style={styles.search}>
-                    <Text style={{fontFamily: "Bebas Neue", color: colors.text2, fontSize: 14, marginBottom: "1%"}}>Search....</Text>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={styles.header}>
+                    <Text style={styles.titleText}>SHOP MY SNEAKERS</Text>
+                    <Text style={{fontFamily: "Bebas Neue", color: colors.text1, fontSize: 16}}>Buy your favorite sneakers !</Text>
                 </View>
-            </View>
 
-            <View style={styles.containerCategories}>
-                <Text style={{fontFamily: "Bebas Neue", color: colors.text1, fontSize: 20, paddingHorizontal: "5%"}}>Brands</Text>
-                <View>
-                    <FlatList
-                        data={categories}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id.toString()}
-                        horizontal={true}
-                        contentContainerStyle={{ padding: "5%" }}
-                    />
+                <View style={styles.containerSearch}>
+                    <AntDesign name="search1" size={18} color="white" />
+                    <View style={styles.search}>
+                        <Text style={{fontFamily: "Bebas Neue", color: colors.text2, fontSize: 14, marginBottom: "1%"}}>Search....</Text>
+                    </View>
                 </View>
-            </View>
 
+                <View style={styles.containerCategories}>
+                    <Text style={{fontFamily: "Bebas Neue", color: colors.text1, fontSize: 20, paddingHorizontal: "5%"}}>Brands</Text>
+                    <View>
+                        <FlatList
+                            data={categories}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id.toString()}
+                            horizontal={true}
+                            contentContainerStyle={{ padding: "5%" }}
+                            showsHorizontalScrollIndicator={false}
+                        />
+                    </View>
+                </View>
+
+                <View style={styles.containerPopular}>
+                    <Text style={{fontFamily: "Bebas Neue", color: colors.text1, fontSize: 20}}>Popular</Text>
+                    {items.map((items) => {
+                        return(
+                            <View style={styles.cardPopular}>
+                                <View>
+                                    <View style={{paddingLeft: 10,paddingTop: 10}}>
+                                        <Text style={{fontFamily: "Bebas Neue", color: "black", fontSize: 18}}>{items.title}</Text>
+                                        <Text style={{fontFamily: "Bebas Neue", color: colors.text2, fontSize: 16}}>{items.brand}</Text>
+                                    </View>
+                                    
+                                    
+                                    <View style={styles.addButton}>
+                                        <AntDesign name="plus" size={16} color="black" />
+                                    </View>
+                                </View>
+                                
+                                <View style={{marginRight: 5}}> 
+                                    <Image source = {items.image}
+                                        style = {{ 
+                                            width: 180,
+                                            height: 95,
+                                            resizeMode: 'contain' }}
+                                    />
+                                </View>
+                                
+                            </View>
+                        )
+                    })}
+                </View>
+            </ScrollView>
         </View>
     )
 }
@@ -92,5 +125,26 @@ const styles = StyleSheet.create({
         width: 150,
         justifyContent: "center",
         alignItems: "center"
+    },
+    containerPopular: {
+        paddingHorizontal: 20,
+        paddingBottom: 20
+    },
+    cardPopular: {
+        backgroundColor: colors.text1, 
+        borderRadius: 20,
+        marginTop: 20,
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+    addButton: {
+        backgroundColor: colors.primary, 
+        marginTop: 10,
+        width: 80,
+        height: 40,
+        alignItems: "center",
+        justifyContent: "center",
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20
     }
 })
