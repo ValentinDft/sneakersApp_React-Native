@@ -33,12 +33,12 @@ export default function Home({navigation}) {
                     <Text style={{fontFamily: "Bebas Neue", color: colors.text1, fontSize: 16}}>Buy your favorite sneakers !</Text>
                 </View>
 
-                <View style={styles.containerSearch}>
+                {/* <View style={styles.containerSearch}>
                     <AntDesign name="search1" size={18} color="white" />
                     <View style={styles.search}>
                         <Text style={{fontFamily: "Bebas Neue", color: colors.text2, fontSize: 14, marginBottom: "1%"}}>Search....</Text>
                     </View>
-                </View>
+                </View> */}
 
                 <View style={styles.containerCategories}>
                     <Text style={{fontFamily: "Bebas Neue", color: colors.text1, fontSize: 20, paddingHorizontal: "5%"}}>Brands</Text>
