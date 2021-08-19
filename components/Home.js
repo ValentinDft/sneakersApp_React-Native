@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, FlatList, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, FlatList, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 // Datas
 import colors from "../assets/colors/colors"
@@ -9,7 +9,7 @@ import items from "../assets/data/items"
 // Icons
 import { AntDesign } from '@expo/vector-icons';
 
-export default function Home() {
+export default function Home({navigation}) {
 
     const renderItem = ({ item }) => {
         return(
@@ -58,17 +58,18 @@ export default function Home() {
                     <Text style={{fontFamily: "Bebas Neue", color: colors.text1, fontSize: 20}}>Popular</Text>
                     {items.map((items) => {
                         return(
-                            <View style={styles.cardPopular}>
+                            <View style={styles.cardPopular} key={items.id.toString()}>
                                 <View>
                                     <View style={{paddingLeft: 10,paddingTop: 10}}>
                                         <Text style={{fontFamily: "Bebas Neue", color: "black", fontSize: 18}}>{items.title}</Text>
                                         <Text style={{fontFamily: "Bebas Neue", color: colors.text2, fontSize: 16}}>{items.brand}</Text>
                                     </View>
                                     
-                                    
-                                    <View style={styles.addButton}>
-                                        <AntDesign name="plus" size={16} color="black" />
-                                    </View>
+                                    <TouchableOpacity onPress={() => navigation.navigate('Detail', {item: items})}>
+                                        <View style={styles.addButton}>
+                                            <AntDesign name="plus" size={16} color="black" />
+                                        </View>
+                                    </TouchableOpacity>
                                 </View>
                                 
                                 <View style={{marginRight: 5}}> 

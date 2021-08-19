@@ -9,6 +9,7 @@ const Stack = createStackNavigator();
 
 // Components
 import Home from './components/Home';
+import Detail from './components/Detail';
 
 export default function App() {
 
@@ -24,6 +25,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+          <Stack.Screen name="Detail" component={Detail} options={{headerShown: false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
