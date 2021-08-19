@@ -60,7 +60,7 @@ export default function Home({navigation}) {
                         return(
                             <View style={styles.cardPopular} key={items.id.toString()}>
                                 <View>
-                                    <View style={{paddingLeft: 10,paddingTop: 10}}>
+                                    <View style={{paddingLeft: 10,paddingTop: 10, width: 170}}>
                                         <Text style={{fontFamily: "Bebas Neue", color: "black", fontSize: 18}}>{items.title}</Text>
                                         <Text style={{fontFamily: "Bebas Neue", color: colors.text2, fontSize: 16}}>{items.brand}</Text>
                                     </View>
@@ -72,7 +72,7 @@ export default function Home({navigation}) {
                                     </TouchableOpacity>
                                 </View>
                                 
-                                <View style={{marginRight: 5}}> 
+                                <View style={{marginRight: 5, justifyContent: "center"}}> 
                                     <Image source = {items.image}
                                         style = {{ 
                                             width: 180,
